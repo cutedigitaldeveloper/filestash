@@ -1,16 +1,20 @@
-version: '2'
+networks:
+    docker_common_network:
+        external: true
+
 services:
   app:
     container_name: filestash
-    image: machines/filestash
+    build:
+        context: .
+        dockerfile: Dockerfile
     restart: always
     environment:
     - APPLICATION_URL=
-    - GDRIVE_CLIENT_ID=<gdrive_client>
-    - GDRIVE_CLIENT_SECRET=<gdrive_secret>
-    - DROPBOX_CLIENT_ID=<dropbox_key>
     - ONLYOFFICE_URL=http://onlyoffice
     - CANARY=true
+    networks:
+        - docker_common_network
     ports:
     - "8334:8334"
     volumes:
