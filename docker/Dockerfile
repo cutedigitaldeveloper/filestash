@@ -1,7 +1,7 @@
 # STEP1: CLONE THE CODE
 FROM alpine:latest as builder_prepare
 WORKDIR /home/
-ARG GIT_REPO=https://github.com/mickael-kerjean/filestash
+ARG GIT_REPO=https://github.com/cutedigitaldeveloper/filestash
 ARG GIT_REF=master
 RUN apk add --no-cache git && \
     git init filestash && \
